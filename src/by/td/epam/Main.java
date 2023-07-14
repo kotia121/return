@@ -1,9 +1,11 @@
 package by.td.epam;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Date date = new Date();
         Scanner scan = new Scanner(System.in);// Task1
         String name = scan.next();
         System.out.println("Hello " + name);
@@ -35,20 +37,25 @@ public class Main {
         }
         //Task5
         int number = scan.nextInt();
-        int sum =0;
-        int com =1;
-        while(number!=0){
-            sum= sum+number%10;
-            number= number/10;
+        int sum = 0;
+        int com = 1;
+        while (number != 0) {
+            sum = sum + number % 10;
+            number = number / 10;
         }
         System.out.println(sum);
 
-        while(number!=0){
-            com= com*number%10;
-            number=number/10;
+        while (number != 0) {
+            com *= number % 10;
+            number = number / 10;
+
         }
         System.out.println(com);
-
+        //Task6
+        System.out.println("Введите фамилию сэр:");
+        String lastName = scan.next();
+        System.out.println("Разаработчик " + lastName + " получил задание " + date.toString());
+        System.out.println("Разаработчик " + lastName + " сдал задание " + date.toString());
 
 
     }
