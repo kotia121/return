@@ -4,63 +4,125 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Date date = new Date();
-        Scanner scan = new Scanner(System.in);// Task1
-        String name = scan.next();
+
+    private static   final Scanner scanner = new Scanner(System.in);
+
+    /**
+     * Приветствует пользователя по имени.
+     */
+    public static void greetUser() {
+
+        System.out.print("Введите имя: ");
+        String name = scanner.next();
         System.out.println("Hello " + name);
 
-        // Task2
-        int value = scan.nextInt();
-        int mirror = 0;
+    }
+
+    /**
+     * Выводит обратную последовательность цифр введенного числа.
+     */
+    public static void reverseNumber() {
+
+        System.out.print("Введите число: ");
+        int value = scanner.nextInt();
+        int reversed = 0;
         while (value != 0) {
-            mirror = mirror * 10 + (value % 10);
+            reversed = reversed * 10 + (value % 10);
             value = value / 10;
         }
-        System.out.print("Введите обраную последовательность цыфр: " + mirror);
+        System.out.println("Обратная последовательность цифр: " + reversed);
 
-        // Task3
+    }
+
+    /**
+     * Выводит элементы массива чисел.
+     */
+    public static void printArrayElements() {
         int[] numbers = {1, 2, 3, 4, 5};
-        for (int x : numbers) {
-            System.out.println(x);
-            System.out.print(x);
+        for (int number : numbers) {
+            System.out.println(number);
+            System.out.print(number);
         }
+        System.out.println();
+    }
 
-        //Task 4
-        String password = ("12345");
+    /**
+     * Проверяет введенный пользователем пароль.
+     */
+    public static void checkPassword() {
+
+        String password = "12345";
         System.out.println("Введите пароль:");
-        String chekout = scan.next();
-        if (chekout.equals(password)) {
+        String inputPassword = scanner.next();
+        if (inputPassword.equals(password)) {
             System.out.println("True");
         } else {
             System.out.println("False");
         }
-        //Task5
-        int number = scan.nextInt();
-        int sum = 0;
-        int com = 1;
-        while (number != 0) {
-            sum = sum + number % 10;
-            number = number / 10;
-        }
-        System.out.println(sum);
-
-        while (number != 0) {
-            com *= number % 10;
-            number = number / 10;
-
-        }
-        System.out.println(com);
-        //Task6
-        System.out.println("Введите фамилию сэр:");
-        String lastName = scan.next();
-        System.out.println("Разаработчик " + lastName + " получил задание " + date.toString());
-        System.out.println("Разаработчик " + lastName + " сдал задание " + date.toString());
-
 
     }
 
+    /**
+     * Вычисляет сумму и произведение цифр введенного числа.
+     */
+    public static void calculateDigits() {
 
+        System.out.print("Введите число: ");
+        int number = scanner.nextInt();
+        int sum = 0;
+        int product = 1;
+        while (number != 0) {
+            sum += number % 10;
+            product *= number % 10;
+            number /= 10;
+        }
+        System.out.println("Сумма цифр: " + sum);
+        System.out.println("Произведение цифр: " + product);
+
+    }
+
+    /**
+     * Выводит информацию о задании и разработчике.
+     */
+    public static void printTaskInfo() {
+
+        Date currentDate = new Date();
+        System.out.print("Введите фамилию: ");
+        String lastName = scanner.next();
+        System.out.println("Разработчик " + lastName + " получил задание " + new Date());
+        try {
+            Thread.sleep(500L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Разработчик " + lastName + " сдал задание " + new Date());
+
+    }
+
+    /**
+     * Главный метод программы.
+     */
+    public static void main(String[] args) {
+        greetUser();
+        reverseNumber();
+        printArrayElements();
+        checkPassword();
+        calculateDigits();
+        printTaskInfo();
+        scanner.close();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
